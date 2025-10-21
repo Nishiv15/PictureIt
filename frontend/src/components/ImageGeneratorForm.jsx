@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { generateImage } from "../api";
 
 function ImageUpload({ image, onImageChange, id }) {
   return (
@@ -60,28 +61,28 @@ function ImageGeneratorForm() {
     }
   };
 
-//   const handleGenerate = async () => {
-//     if (!image1 || !image2) {
-//       alert("Please upload both photos before generating.");
-//       return;
-//     }
-//     setIsLoading(true);
-//     setGeneratedImage(null);
+  const handleGenerate = async () => {
+    if (!image1 || !image2) {
+      alert("Please upload both photos before generating.");
+      return;
+    }
+    setIsLoading(true);
+    setGeneratedImage(null);
 
-//     try {
-//       const outputImage = await generateImage(
-//         image1,
-//         image2,
-//         gesture,
-//         background
-//       );
-//       setGeneratedImage(outputImage);
-//     } catch (error) {
-//       alert("Failed to generate image: " + error.message);
-//     } finally {
-//       setIsLoading(false);
-//     }
-//   };
+    try {
+      const outputImage = await generateImage(
+        image1,
+        image2,
+        gesture,
+        background
+      );
+      setGeneratedImage(outputImage);
+    } catch (error) {
+      alert("Failed to generate image: " + error.message);
+    } finally {
+      setIsLoading(false);
+    }
+  };
 
   return (
     <div className="bg-gradient-to-br from-indigo-50 to-purple-100 max-w-4xl mx-auto my-12 p-6 sm:p-8 rounded-2xl shadow-xl">
